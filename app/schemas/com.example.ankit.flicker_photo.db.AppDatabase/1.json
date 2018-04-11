@@ -1,0 +1,192 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "d8aec1d06c0c3e3c32d3c85d6a7e0214",
+    "entities": [
+      {
+        "tableName": "groupItem",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`nsid` TEXT NOT NULL, `iconfarm` INTEGER NOT NULL, `iconserver` TEXT, `members` TEXT, `name` TEXT, `poolCount` TEXT, `privacy` TEXT, `topicCount` TEXT, `eighteenplus` INTEGER NOT NULL, `group_search` TEXT, PRIMARY KEY(`nsid`))",
+        "fields": [
+          {
+            "fieldPath": "nsid",
+            "columnName": "nsid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "iconfarm",
+            "columnName": "iconfarm",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "iconserver",
+            "columnName": "iconserver",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "members",
+            "columnName": "members",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "poolCount",
+            "columnName": "poolCount",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "privacy",
+            "columnName": "privacy",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "topicCount",
+            "columnName": "topicCount",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "eighteenplus",
+            "columnName": "eighteenplus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "groupSearch",
+            "columnName": "group_search",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "nsid"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_groupItem_group_search",
+            "unique": false,
+            "columnNames": [
+              "group_search"
+            ],
+            "createSql": "CREATE  INDEX `index_groupItem_group_search` ON `${TABLE_NAME}` (`group_search`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "photo_item",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`photo_tag` TEXT, `owner` TEXT, `server` TEXT, `ispublic` INTEGER NOT NULL, `isfriend` INTEGER NOT NULL, `farm` INTEGER NOT NULL, `id` TEXT NOT NULL, `secret` TEXT, `title` TEXT, `isfamily` INTEGER NOT NULL, `getURl` TEXT, `offline` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "tag",
+            "columnName": "photo_tag",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "owner",
+            "columnName": "owner",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "server",
+            "columnName": "server",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ispublic",
+            "columnName": "ispublic",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isfriend",
+            "columnName": "isfriend",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "farm",
+            "columnName": "farm",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "secret",
+            "columnName": "secret",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isfamily",
+            "columnName": "isfamily",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "getURl",
+            "columnName": "getURl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isOffline",
+            "columnName": "offline",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_photo_item_photo_tag_offline",
+            "unique": false,
+            "columnNames": [
+              "photo_tag",
+              "offline"
+            ],
+            "createSql": "CREATE  INDEX `index_photo_item_photo_tag_offline` ON `${TABLE_NAME}` (`photo_tag`, `offline`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d8aec1d06c0c3e3c32d3c85d6a7e0214\")"
+    ]
+  }
+}
